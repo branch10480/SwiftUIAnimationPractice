@@ -33,6 +33,8 @@ struct MainView: View {
           .rotationEffect(.degrees(showDetail ? 90 : 0))
         
         if showDetail {
+          // .transition はViewの表示・非表示時に動作するアニメーション
+          // デフォルトでは fade アニメーションになっている
           Text("Detail")
         }
         
