@@ -34,8 +34,9 @@ struct MainView: View {
         
         if showDetail {
           // .transition はViewの表示・非表示時に動作するアニメーション
-          // デフォルトでは fade アニメーションになっている
+          // .moge(edge: .top) は上端からのアニメーションを意味する
           Text("Detail")
+            .transition(.move(edge: .top))
         }
         
         Spacer()
