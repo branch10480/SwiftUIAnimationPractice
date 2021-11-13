@@ -29,6 +29,9 @@ struct MainView: View {
       Image(systemName: "chevron.right.circle")
         .font(.system(size: 50))
         .rotationEffect(.degrees(showDetail ? 90 : 0))
+        // .animation(nil...) でアニメーションをOFFにできる
+        .animation(nil, value: showDetail)
+        .scaleEffect(showDetail ? 1.5 : 1)
         .animation(.spring(), value: showDetail)
     }
   }
