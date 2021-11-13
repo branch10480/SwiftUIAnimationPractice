@@ -31,6 +31,7 @@ struct MainView: View {
         .rotationEffect(.degrees(showDetail ? 90 : 0))
         // .animation(nil...) でアニメーションをOFFにできる
         .animation(nil, value: showDetail)
+        .animation(.spring(), value: showDetail) // これより前に .animation(nil があるからこの行は適用されない
         .scaleEffect(showDetail ? 1.5 : 1)
         .animation(.spring(), value: showDetail)
     }
