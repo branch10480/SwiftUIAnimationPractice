@@ -25,7 +25,8 @@ struct MainView: View {
   var body: some View {
     Button(action: {
       // Stateの変更部分（.toggle()） を withAnimation でくくると、そのStateに関連するすべてのビューがアニメーションする
-      withAnimation {
+      // withAnimation(.spring()) { ... で .sprint() アニメーション指定ができる
+      withAnimation(.spring()) {
         self.showDetail.toggle()
       }
     }) {
