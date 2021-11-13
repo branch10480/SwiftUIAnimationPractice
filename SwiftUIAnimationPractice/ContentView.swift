@@ -19,6 +19,15 @@ struct ContentView_Previews: PreviewProvider {
   }
 }
 
+extension AnyTransition {
+  static var moveAndFade: AnyTransition {
+    let insertion = AnyTransition.move(edge: .top).combined(with: .opacity)
+    let removal = AnyTransition.scale.combined(with: .opacity)
+    // .asymmetric を使って表示時、非表示時のアニメーションを別々にできる
+    return .asymmetric(insertion: insertion, removal: removal)
+  }
+}
+
 struct MainView: View {
   @State var showDetail: Bool
   
@@ -34,10 +43,8 @@ struct MainView: View {
         
         if showDetail {
           // .transition はViewの表示・非表示時に動作するアニメーション
-          Text("Detail").transition(
-            // AnyTransitionから初めて .move .combined で transition を組み合わせる
-            AnyTransition.move(edge: .top).combined(with: .opacity)
-          )
+          // extension で静的定義した AnyTransition
+          Text("Detail").transition(.moveAndFade)
         }
         
         Spacer()
