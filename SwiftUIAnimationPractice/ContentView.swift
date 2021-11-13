@@ -34,10 +34,10 @@ struct MainView: View {
         
         if showDetail {
           // .transition はViewの表示・非表示時に動作するアニメーション
-          // .moge(edge: .top) は上端からのアニメーションを意味する
-          Text("Detail")
-            .transition(.move(edge: .top))
-            .opacity(showDetail ? 1 : 0) // こう書いても .transition には反映されない
+          Text("Detail").transition(
+            // AnyTransitionから初めて .move .combined で transition を組み合わせる
+            AnyTransition.move(edge: .top).combined(with: .opacity)
+          )
         }
         
         Spacer()
