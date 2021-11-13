@@ -33,6 +33,8 @@ struct MainView: View {
       Image(systemName: "chevron.right.circle")
         .font(.system(size: 50))
         .rotationEffect(.degrees(showDetail ? 90 : 0))
+        // withAnimation を上書きできる（この場合、rotationEffectはアニメーションしない）
+        .animation(nil, value: showDetail)
         .scaleEffect(showDetail ? 1.5 : 1)
     }
   }
