@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+  var body: some View {
+    MainView(showDetail: false)
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+  static var previews: some View {
+    ContentView()
+  }
+}
+
+struct MainView: View {
+  @State var showDetail: Bool
+  
+  var body: some View {
+    Button(action: {
+      self.showDetail.toggle()
+    }) {
+      Image(systemName: "chevron.right.circle")
+        .font(.system(size: 50))
+        .rotationEffect(.degrees(showDetail ? 90 : 0))
+        .animation(.spring(), value: showDetail)
     }
+  }
 }
