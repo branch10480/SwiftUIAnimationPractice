@@ -86,3 +86,30 @@ struct Step2View: View {
     }
   }
 }
+
+struct Step3View: View {
+  @State var showDetail: Bool
+  
+  var body: some View {
+    Button(action: {
+      withAnimation(.spring()) {
+        showDetail.toggle()
+      }
+    }) {
+      VStack {
+        Image(systemName: "chevron.right.circle").font(.system(size: 50))
+          .rotationEffect(.degrees(showDetail ? 90 : 0))
+        
+        if showDetail {
+          // .transition はViewの表示・非表示時に動作するアニメーション
+          Text("Detail").transition(
+            // AnyTransitionから初めて .move .combined で transition を組み合わせる
+            AnyTransition.move(edge: .top).combined(with: .opacity)
+          )
+        }
+        
+        Spacer()
+      }
+    }
+  }
+}
