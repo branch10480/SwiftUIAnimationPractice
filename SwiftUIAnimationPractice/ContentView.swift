@@ -38,3 +38,23 @@ struct MainView: View {
     }
   }
 }
+
+struct Step1View: View {
+  @State var showDetail: Bool
+  
+  var body: some View {
+    Button(action: {
+      self.showDetail.toggle()
+    }) {
+      Image(systemName: "chevron.right.circle")
+        .font(.system(size: 50))
+        .rotationEffect(.degrees(showDetail ? 90 : 0))
+      // .animation(nil...) でアニメーションをOFFにできる
+        .animation(nil, value: showDetail)
+        .scaleEffect(showDetail ? 1.5 : 1)
+      // .speed() で元々のアニメーション速度を乗算で変化させられる
+      // .speed(0.5) は速度を0.5倍することなので2倍遅くなる
+        .animation(.spring().speed(0.5), value: showDetail)
+    }
+  }
+}
