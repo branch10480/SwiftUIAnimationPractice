@@ -31,9 +31,10 @@ struct MainView: View {
         .rotationEffect(.degrees(showDetail ? 90 : 0))
         // .animation(nil...) でアニメーションをOFFにできる
         .animation(nil, value: showDetail)
-        .animation(.spring(), value: showDetail) // これより前に .animation(nil があるからこの行は適用されない
         .scaleEffect(showDetail ? 1.5 : 1)
-        .animation(.spring(), value: showDetail)
+        // .speed() で元々のアニメーション速度を乗算で変化させられる
+        // .speed(0.5) は速度を0.5倍することなので2倍遅くなる
+        .animation(.spring().speed(0.5), value: showDetail)
     }
   }
 }
