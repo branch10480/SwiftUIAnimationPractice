@@ -37,6 +37,7 @@ struct MainView: View {
           // .moge(edge: .top) は上端からのアニメーションを意味する
           Text("Detail")
             .transition(.move(edge: .top))
+            .opacity(showDetail ? 1 : 0) // こう書いても .transition には反映されない
         }
         
         Spacer()
